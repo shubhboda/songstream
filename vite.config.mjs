@@ -5,6 +5,8 @@ import tagger from "@dhiwise/component-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // Ensure assets resolve correctly when loaded from file:// in Electron
+  base: "./",
   build: {
     outDir: "dist",
     chunkSizeWarningLimit: 2000,
