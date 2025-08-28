@@ -47,8 +47,6 @@ const Header = ({ currentUser = null, onSearch = () => {}, searchQuery = '', onA
         <Link to="/music-dashboard-home" className="flex items-center space-x-2 flex-shrink-0">
           <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
             <Icon name="Flute" size={20} color="white" />
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <Icon name="Flute" size={20} color="white" />
           </div>
           <span className="text-xl font-bold text-foreground hidden sm:block">SongStream</span>
         </Link>
