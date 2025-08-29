@@ -91,6 +91,21 @@ const MusicDashboardHome = () => {
         change: t.change ?? 'same',
         changeValue: t.changeValue ?? 0
       }));
+      
+      // Add the Gujarati song to trending tracks
+      const gujaratiSong = {
+        id: 'gujarati-song-1',
+        title: 'Dhanya Dhanya Dwarikawala',
+        artist: 'Sabhiben Ahir',
+        album: 'Song of Faith',
+        artwork: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop',
+        duration: 240, // 4 minutes
+        rank: 1,
+        change: 'new',
+        changeValue: 0,
+        audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+      };
+      
       // Ensure the requested YouTube song is present
       const ytId = 'DOvG7MC8i7E';
       const already = normalized.some(t => t.youtubeId === ytId || String(t.id) === `yt-${ytId}`);
@@ -109,9 +124,12 @@ const MusicDashboardHome = () => {
         },
         ...normalized
       ];
-      setTrendingTracks(injected);
+      
+      // Combine Gujarati song with other tracks
+      const allTracks = [gujaratiSong, ...injected];
+      setTrendingTracks(allTracks);
       if (!queue || queue.length === 0) {
-        setQueue(injected);
+        setQueue(allTracks);
         setQueueIndex(0);
       }
     } catch (e) {
