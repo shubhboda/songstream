@@ -7,13 +7,25 @@ import Button from '../../../components/ui/Button';
 const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
   const defaultTrending = [
     {
+      id: 'gujarati-song-1',
+      title: "Dhanya Dhanya Dwarikawala",
+      artist: "Sabhiben Ahir",
+      album: "Song of Faith",
+      artwork: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
+      duration: 240,
+      rank: 1,
+      change: "new",
+      changeValue: 0,
+      audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+    },
+    {
       id: 12,
       title: "Unholy",
       artist: "Sam Smith ft. Kim Petras",
       album: "Gloria",
       artwork: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?w=300&h=300&fit=crop",
       duration: 156,
-      rank: 1,
+      rank: 2,
       change: "up",
       changeValue: 2
     },
@@ -24,7 +36,7 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
       album: "Single",
       artwork: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop",
       duration: 175,
-      rank: 2,
+      rank: 3,
       change: "same",
       changeValue: 0
     },
@@ -35,7 +47,7 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
       album: "Heroes & Villains",
       artwork: "https://images.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616_1280.jpg?w=300&h=300&fit=crop",
       duration: 221,
-      rank: 3,
+      rank: 4,
       change: "up",
       changeValue: 1
     },
@@ -46,23 +58,13 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
       album: "Un Verano Sin Ti",
       artwork: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
       duration: 226,
-      rank: 4,
+      rank: 5,
       change: "down",
       changeValue: 1
-    },
-    {
-      id: 16,
-      title: "Shivers",
-      artist: "Ed Sheeran",
-      album: "=",
-      artwork: "https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?w=300&h=300&fit=crop",
-      duration: 207,
-      rank: 5,
-      change: "up",
-      changeValue: 3
     }
   ];
 
+  // Use provided trending tracks or fallback to default
   const tracks = trendingTracks?.length > 0 ? trendingTracks : defaultTrending;
 
   const formatDuration = (seconds) => {
@@ -77,6 +79,8 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
         return <Icon name="TrendingUp" size={12} color="var(--color-success)" />;
       case 'down':
         return <Icon name="TrendingDown" size={12} color="var(--color-error)" />;
+      case 'new':
+        return <Icon name="Star" size={12} color="var(--color-primary)" />;
       default:
         return <Icon name="Minus" size={12} color="var(--color-muted-foreground)" />;
     }
@@ -88,6 +92,8 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
         return 'text-success';
       case 'down':
         return 'text-error';
+      case 'new':
+        return 'text-primary';
       default:
         return 'text-muted-foreground';
     }
@@ -155,6 +161,11 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
               <p className="text-xs text-muted-foreground truncate">
                 {track?.artist}
               </p>
+              {track?.album && (
+                <p className="text-xs text-muted-foreground/70 truncate">
+                  {track?.album}
+                </p>
+              )}
             </div>
             
             {/* Duration & Change */}
@@ -166,6 +177,11 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
                 {track?.changeValue > 0 && (
                   <div className={`text-xs ${getRankChangeColor(track?.change)} flex items-center justify-end space-x-1`}>
                     <span>{track?.changeValue}</span>
+                  </div>
+                )}
+                {track?.change === 'new' && (
+                  <div className="text-xs text-primary flex items-center justify-end">
+                    <span>NEW</span>
                   </div>
                 )}
               </div>

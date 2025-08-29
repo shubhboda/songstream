@@ -32,6 +32,20 @@ const MusicLibraryBrowser = () => {
   // Mock data
   const mockSongs = [
     {
+      id: 'gujarati-song-1',
+      title: "Dhanya Dhanya Dwarikawala",
+      artist: "Sabhiben Ahir",
+      album: "Song of Faith",
+      duration: 240,
+      artwork: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
+      isFavorite: true,
+      isExplicit: false,
+      genre: "Gujarati",
+      year: 2025,
+      playCount: 120,
+      audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+    },
+    {
       id: 1,
       title: "Blinding Lights",
       artist: "The Weeknd",
@@ -99,6 +113,15 @@ const MusicLibraryBrowser = () => {
   ];
 
   const mockAlbums = [
+    {
+      id: 'gujarati-album-1',
+      title: "Song of Faith",
+      artist: "Sabhiben Ahir",
+      year: 2025,
+      trackCount: 1,
+      artwork: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop",
+      genre: "Gujarati"
+    },
     {
       id: 1,
       title: "After Hours",
