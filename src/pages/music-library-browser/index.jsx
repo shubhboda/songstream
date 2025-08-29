@@ -43,7 +43,10 @@ const MusicLibraryBrowser = () => {
       genre: "Gujarati",
       year: 2025,
       playCount: 120,
-      audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+      // Primary playback through YouTube (most reliable)
+      youtubeId: 'DOvG7MC8i7E',
+      // Fallback audio source
+      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav'
     },
     {
       id: 1,

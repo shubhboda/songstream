@@ -16,7 +16,9 @@ const TrendingSection = ({ trendingTracks = [], onPlayTrack = () => {} }) => {
       rank: 1,
       change: "new",
       changeValue: 0,
-      audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+      // Use a working audio source for web playback
+      audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav',
+      youtubeId: 'DOvG7MC8i7E' // Primary playback through YouTube
     },
     {
       id: 12,

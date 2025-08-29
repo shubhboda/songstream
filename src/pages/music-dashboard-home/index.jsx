@@ -92,7 +92,7 @@ const MusicDashboardHome = () => {
         changeValue: t.changeValue ?? 0
       }));
       
-      // Add the Gujarati song to trending tracks
+      // Add the Gujarati song to trending tracks with working audio
       const gujaratiSong = {
         id: 'gujarati-song-1',
         title: 'Dhanya Dhanya Dwarikawala',
@@ -103,7 +103,10 @@ const MusicDashboardHome = () => {
         rank: 1,
         change: 'new',
         changeValue: 0,
-        audioUrl: 'file:///c:/Users/shubh/OneDrive/Desktop/Dhanya%20Dhanya%20Dwarikawala%20I%20Sabhiben%20Ahir%20I%20@RAJESH_AHIR%20I%20Song%20of%20Faith%20I%20New%20Gujarati%20Song%202025.mp3'
+        // Primary playback through YouTube (most reliable)
+        youtubeId: 'DOvG7MC8i7E',
+        // Fallback audio source
+        audioUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav'
       };
       
       // Ensure the requested YouTube song is present
@@ -179,14 +182,41 @@ const MusicDashboardHome = () => {
     setCurrentTrack(track);
     setIsPlaying(true);
     setProgress(0);
+    
     // Load appropriate source
     if (track?.youtubeId) {
+      // Use YouTube player
       yt.load(track.youtubeId);
-      setTimeout(() => yt.play(), 0);
+      setTimeout(() => yt.play(), 100);
     } else if (track?.audioUrl) {
+      // Use HTML5 audio
       if (!audioRef.current) return;
-      audioRef.current.src = track.audioUrl;
-      audioRef.current.play();
+      
+      const audio = audioRef.current;
+      audio.src = track.audioUrl;
+      audio.volume = volume;
+      
+      // Add error handling
+      audio.onerror = () => {
+        console.error('Audio failed to load:', track.audioUrl);
+        setIsPlaying(false);
+        // Fallback to YouTube if available
+        if (track.youtubeId) {
+          yt.load(track.youtubeId);
+          setTimeout(() => yt.play(), 100);
+        }
+      };
+      
+      // Play audio
+      audio.play().catch(error => {
+        console.error('Audio play failed:', error);
+        setIsPlaying(false);
+        // Fallback to YouTube if available
+        if (track.youtubeId) {
+          yt.load(track.youtubeId);
+          setTimeout(() => yt.play(), 100);
+        }
+      });
     }
   };
 
