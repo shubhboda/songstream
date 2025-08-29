@@ -57,11 +57,14 @@
   },
   "scripts": {
     "start": "vite",
+    "dev": "vite --host --port 4028",
     "build": "vite build --sourcemap",
     "serve": "vite preview",
-    "dev:electron": "cross-env VITE_DEV_SERVER_URL=http://localhost:4028 concurrently \"npm:start\" \"npm:electron\"",
+    "dev:electron": "cross-env VITE_DEV_SERVER_URL=http://localhost:4028 concurrently \"npm:dev\" \"npm:electron\"",
     "electron": "wait-on tcp:4028 && electron .",
-    "build:electron": "vite build && electron-builder --win --x64"
+    "build:electron": "vite build && electron-builder --win --x64",
+    "watch": "vite build --watch",
+    "deploy": "npm run build && vercel --prod"
   },
   "eslintConfig": {
     "extends": [
