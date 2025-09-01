@@ -4,7 +4,54 @@ A modern React-based project utilizing the latest frontend technologies and tool
 
 ## Desktop App (Electron)
 
-This project can be packaged as a Windows desktop app using Electron. See scripts below.
+This project can be packaged as a desktop application for Windows, macOS, and Linux using Electron, or run as a standard web application in a browser.
+
+### Easy Launch Options (Windows)
+
+Use our convenient batch scripts to install, run, build, or add songs to the project:
+
+- **Quick Install**: Execute `quick-install.bat` for one-click desktop application installation
+- **Custom Install**: Execute `install-songstream.bat` for guided installation options
+- **Run the application**: Execute `start-project.bat` and choose whether to run as a website or desktop application
+- **Build for distribution**: Execute `build-project.bat` and choose whether to build the website or desktop application
+- **Add songs**: Execute `add-song.bat` or select "Add Songs to Library" option in `start-project.bat` to quickly add songs to your library
+
+For detailed installation instructions, see [INSTALLATION.md](./INSTALLATION.md)
+
+### Running in Development Mode
+
+To run the application in development mode with hot reloading:
+
+```bash
+# For web application
+npm run dev
+
+# For desktop application
+npm run dev:electron
+```
+
+The web version will be available at http://localhost:4028, while the desktop version will launch as an Electron application.
+
+### Building for Distribution
+
+To create distributable packages:
+
+```bash
+# For web deployment
+npm run build
+
+# For desktop application
+npm run build:electron
+```
+
+This will build the application for your target platform. The output will be in the `dist` folder.
+
+### Desktop Application Features
+
+- **System Tray Integration**: The application minimizes to the system tray and can be restored by clicking the tray icon.
+- **Application Menu**: Standard application menu with File, Edit, View, and Help options.
+- **Settings Persistence**: User settings are saved between sessions.
+- **Cross-Platform**: Works on Windows, macOS, and Linux.
 
 ## 🚀 Features
 
@@ -31,8 +78,13 @@ This project can be packaged as a Windows desktop app using Electron. See script
    # or
    yarn install
    ```
-   
-2. Start the development server:
+
+2. Easy Launch Options (Windows):
+   - Run `start-project.bat` and choose whether to run as a website or desktop application
+   - Run `build-project.bat` to build either the website or desktop application
+   - See `APP_GUIDE.md` for detailed instructions on both web and desktop modes
+
+3. Start the development server:
    ```bash
    npm start
    # or

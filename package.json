@@ -116,12 +116,29 @@
     },
     "win": {
       "target": ["nsis"],
-      "artifactName": "SongStream-Setup-${version}.exe"
+      "artifactName": "SongStream-Setup-${version}.exe",
+      "icon": "public/flute-icon.svg"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.music",
+      "icon": "public/flute-icon.svg"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Audio;Music",
+      "icon": "public/flute-icon.svg"
     },
     "nsis": {
       "oneClick": true,
       "perMachine": false,
-      "allowToChangeInstallationDirectory": false
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
     }
   }
 }
